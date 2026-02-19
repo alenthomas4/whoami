@@ -7,13 +7,13 @@ const Navbar = () => {
     { id: 'home', label: 'Home', href: '#home' },
     { id: 'projects', label: 'Projects', href: '#projects' },
     { id: 'resume', label: 'Resume', href: '#resume' },
-    { id: 'faq', label: 'FAQ', href: '#faq' },
+    { id: 'contacts', label: 'Contacts', href: '#contacts' },
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-4xl px-6 pt-8">
-        <div className="bg-white rounded-full shadow-lg px-8 py-4">
+        <div className="bg-white/85 50 rounded-full shadow-lg px-8 py-4">
           <ul className="flex justify-center items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.id}>
