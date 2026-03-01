@@ -22,7 +22,7 @@ const ProjectCard = ({
   featured,
 }: ProjectCardProps) => {
   return (
-    <div className="relative bg-white rounded-3xl p-16 text-gray-900 overflow-hidden shadow-xl">
+    <div className="relative bg-white/100 rounded-3xl p-16 text-gray-900 overflow-hidden shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer">
       {/* Stars Badge */}
       {stars && (
         <div className="absolute top-6 right-6">
