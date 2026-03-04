@@ -22,6 +22,7 @@ const JobCard = ({
   description,
 }: JobCardProps) => {
   const isImageLogo = logo.includes('/') || logo.includes('.');
+  const resolvedLogo = logo.startsWith('/') ? `${import.meta.env.BASE_URL}${logo.slice(1)}` : logo;
 
   return (
     <div className="mb-8 last:mb-0">
@@ -29,7 +30,7 @@ const JobCard = ({
         {/* Logo */}
         <div className="w-14 h-14 rounded-xl bg-gray-800 flex items-center justify-center flex-shrink-0 overflow-hidden relative z-10">
           {isImageLogo ? (
-            <img src={logo} alt={company} className="w-full h-full object-contain p-1 bg-white" />
+            <img src={resolvedLogo} alt={company} className="w-full h-full object-contain p-1 bg-white" />
           ) : (
             <span className="text-white font-bold text-lg">{logo}</span>
           )}

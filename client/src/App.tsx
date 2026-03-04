@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Section from './components/Section';
 import ExperienceShell from './components/ExperienceShell';
 import ProjectCard from './components/ProjectCard';
-import Contacts from './components/Contacts';
 import AboutMe from './components/CurrentlyBuilding';
 import Socials from './components/Socials';
 

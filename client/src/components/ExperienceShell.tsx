@@ -124,23 +124,23 @@ const ExperienceShell = () => {
   const currentData = activeTab === 'experience' ? experiences : education;
 
   return (
-    <div className="w-full mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+    <div className="w-full max-w-[1200px] mx-auto bg-white rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden">
       {/* Terminal Header */}
-      <div className="bg-gray-50 px-6 py-3 flex items-center gap-2 border-b border-gray-200">
+      <div className="bg-gray-50 px-4 sm:px-6 py-3 flex items-center gap-2 border-b border-gray-200">
         <div className="flex gap-2">
           <div className="w-3 h-3 rounded-md bg-red-400"></div>
           <div className="w-3 h-3 rounded-md bg-yellow-400"></div>
           <div className="w-3 h-3 rounded-full bg-green-400"></div>
         </div>
-        <span className="text-gray-600 text-sm ml-4 font-mono">zsh — alen@MacBook-Pro: ~</span>
+        <span className="text-gray-600 text-xs sm:text-sm ml-2 sm:ml-4 font-mono truncate">zsh — alen@MacBook-Pro: ~</span>
       </div>
 
       {/* Terminal Content */}
-      <div className="bg-white p-12">
+      <div className="bg-white p-3 sm:p-6 lg:p-8">
         {/* Typed animation container */}
         <div className="mb-6">
-          <div className="flex items-start gap-2 font-mono">
-            <span className="text-blue-600">alen@MacBook-Pro ~ %</span>
+          <div className="flex items-start gap-2 font-mono text-sm sm:text-base">
+            <span className="text-blue-600 break-all">alen@MacBook-Pro ~ %</span>
             <span ref={typedElement} className="text-gray-800 whitespace-pre-wrap"></span>
           </div>
         </div>
@@ -153,8 +153,8 @@ const ExperienceShell = () => {
             <div className="text-gray-500 text-sm mb-1 font-mono">remote: Enumerating objects: 247, done.</div>
             <div className="text-gray-500 text-sm mb-4 font-mono">Receiving objects: 100% ████████████ done.</div>
             
-            <div className="flex items-center gap-2 mb-6 font-mono">
-              <span className="text-blue-600">alen@MacBook-Pro ~ %</span>
+            <div className="flex items-center gap-2 mb-6 font-mono text-sm sm:text-base">
+              <span className="text-blue-600 break-all">alen@MacBook-Pro ~ %</span>
               <span ref={typedElement2} className="text-gray-800"></span>
             </div>
           </>
@@ -164,10 +164,10 @@ const ExperienceShell = () => {
         {showTabs && (
           <>
             {/* Tabs */}
-            <div className="flex gap-4 mb-8 border-b border-gray-200">
+            <div className="flex gap-2 sm:gap-3 mb-6 border-b border-gray-200 overflow-x-auto">
               <button
                 onClick={() => setActiveTab('experience')}
-                className={`pb-5 pt-3 px-6 font-medium transition-all font-sans text-center ${
+                className={`pb-3 sm:pb-5 pt-2 sm:pt-3 px-3 sm:px-6 text-sm sm:text-base font-medium transition-all font-sans text-center whitespace-nowrap ${
                   activeTab === 'experience'
                     ? 'text-white bg-gray-700 rounded-t-lg'
                     : 'text-gray-600 hover:text-gray-900'
@@ -177,7 +177,7 @@ const ExperienceShell = () => {
               </button>
               <button
                 onClick={() => setActiveTab('education')}
-                className={`pb-5 pt-3 px-6 font-medium transition-all font-sans text-center ${
+                className={`pb-3 sm:pb-5 pt-2 sm:pt-3 px-3 sm:px-6 text-sm sm:text-base font-medium transition-all font-sans text-center whitespace-nowrap ${
                   activeTab === 'education'
                     ? 'text-white bg-gray-700 rounded-t-lg'
                     : 'text-gray-600 hover:text-gray-900'
