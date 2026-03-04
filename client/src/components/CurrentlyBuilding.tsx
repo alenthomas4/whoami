@@ -17,7 +17,7 @@ function AboutMe({ description }: AboutMeProps) {
         </div>
         
         <div className="text-center">
-          <p className="text-xl text-white/90 leading-relaxed">
+          <p className="text-xl text-white/90 leading-relaxed whitespace-pre-line">
             {description}
           </p>
         </div>

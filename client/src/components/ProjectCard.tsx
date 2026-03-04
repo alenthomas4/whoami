@@ -22,7 +22,7 @@ const ProjectCard = ({
   featured,
 }: ProjectCardProps) => {
   return (
-    <div className="relative bg-white/100 rounded-3xl p-16 text-gray-900 overflow-hidden shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer">
+    <div className="relative bg-white rounded-3xl p-16 text-gray-900 overflow-hidden shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer">
       {/* Stars Badge */}
       {stars && (
         <div className="absolute top-6 right-6">
@@ -35,8 +35,14 @@ const ProjectCard = ({
       <div className="flex items-start gap-12">
         {/* Icon */}
         <div className="flex-shrink-0">
-          <div className="w-48 h-48">
-            <img src={icon} alt={title} className="w-full h-full object-contain" />
+          <div className="w-48 h-48 rounded-2xl bg-gray-50 overflow-hidden flex items-center justify-center">
+            {icon ? (
+              <img src={icon} alt={title} className="w-full h-full object-contain p-2" />
+            ) : (
+              <div className="w-full h-full bg-purple-600 flex items-center justify-center">
+                <span className="text-white font-bold text-4xl tracking-wide">OMG</span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -70,7 +76,7 @@ const ProjectCard = ({
                 href={links.github}
                 className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
               >
-                <span>⚙</span>
+                <img src="/git.png" alt="GitHub" className="w-5 h-5 object-contain" />
                 <span className="text-lg">GitHub</span>
               </a>
             )}
