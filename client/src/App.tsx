@@ -52,7 +52,7 @@ function App() {
                 <span ref={typedElement} className="inline-block"></span>
               </h1>
              <AboutMe
-            description={`I’m Alen Thomas, a Computer Science Honours student at the University of Calgary. I’m most interested in Java/Spring Boot, machine learning, and the beauty of algorithms, and I dabble in frontend work too.
+            description={`I’m Alen Thomas, a CS Honours student at UCalgary with a strong interest in machine learning research and backend engineering. I love combining algorithmic thinking with practical system design to build reliable software.
 
 Outside of coding, I find joy in playing piano, making homemade pasta, and hosting friends and family.`}
           />
