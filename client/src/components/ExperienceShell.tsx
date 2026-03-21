@@ -106,11 +106,11 @@ const ExperienceShell = () => {
       duration: '4 years',
       type: 'Full-time',
       tags: ['Computer Science', 'Software Engineering', 'Algorithms', 'Data Structures'],
-      description: ['Graduated with honors', 'Dean\'s List recipient'],
+      description: ['Enrolled in Computer Science Honours', 'Dean\'s List recipient'],
     },
      {
       company: 'Western Canada High School',
-      logo: '/interlock.png',
+        logo: '/wchs.png',
       title: 'Partial IB Student',
       location: 'Calgary, Canada',
       dateRange: 'Sep 2019 - Jun 2022',
