@@ -6,6 +6,8 @@ export default defineConfig({
   base: "/whoami/",
   server: {
     host: true,
+    port: 5175,
+    strictPort: true,
     allowedHosts: true
   }
 })

@@ -1,110 +1,86 @@
-interface ProjectCardProps {
+export type ProjectCardProps = {
   title: string;
   description: string;
-  icon: string;
+  technologies: string[];
+  year?: string;
+  href?: string;
   stars?: number;
-  links: {
-    learnMore?: string;
-    useProject?: string;
-    github?: string;
-  };
-  article?: string;
-  featured?: boolean;
+  forks?: number;
+};
+
+function StatIcon({ kind }: { kind: 'star' | 'fork' }) {
+  if (kind === 'star') {
+    return (
+      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+        <path d="m12 3.7 2.34 4.74 5.22.76-3.78 3.68.9 5.2L12 15.6l-4.68 2.47.9-5.2L4.44 9.2l5.22-.76L12 3.7Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <circle cx="7" cy="5" r="2" />
+      <circle cx="17" cy="12" r="2" />
+      <circle cx="7" cy="19" r="2" />
+      <path d="M8.8 6.2 15.2 10.8" strokeLinecap="round" />
+      <path d="M8.8 17.8 15.2 13.2" strokeLinecap="round" />
+    </svg>
+  );
 }
 
-const ProjectCard = ({
-  title,
-  description,
-  icon,
-  stars,
-  links,
-  article,
-  featured,
-}: ProjectCardProps) => {
+function ProjectCard({ title, description, technologies, year, href, stars = 0, forks = 0 }: ProjectCardProps) {
   return (
-    <div className="relative max-w-[1200px] mx-auto bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 xl:p-10 text-gray-900 overflow-hidden shadow-xl transition-transform duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-      {/* Stars Badge */}
-      {stars && (
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
-          <span className="bg-gray-100 text-gray-700 px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm">
-            stars <span className="ml-1 text-gray-900 font-semibold">{stars}</span>
-          </span>
+    <article className="group relative flex min-h-[168px] flex-col justify-between rounded-[12px] border border-[#2a2a33]/35 bg-[rgba(250,250,248,0.96)] px-5 pb-4 pt-4 shadow-[0_1px_0_0_rgba(42,42,51,0.22)] transition duration-200 hover:-translate-y-0.5 hover:border-[#2a2a33]/80 hover:shadow-[0_7px_0_0_rgba(36,36,46,0.95)] focus-within:-translate-y-0.5 focus-within:border-[#2a2a33]/80 focus-within:shadow-[0_7px_0_0_rgba(36,36,46,0.95)]">
+      <header className="mb-2.5 flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent bg-transparent" aria-hidden="true" />
+          <h3 className="m-0 text-[1.45rem] font-medium leading-none tracking-[-0.03em] text-[#1d1d21]">{title}</h3>
         </div>
-      )}
-
-      <div className="flex flex-col md:flex-row items-start gap-5 sm:gap-6 lg:gap-8">
-        {/* Icon */}
-        <div className="flex-shrink-0">
-          <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-40 xl:h-40 rounded-2xl bg-gray-50 overflow-hidden flex items-center justify-center">
-            {icon ? (
-              <img src={icon} alt={title} className="w-full h-full object-contain p-2" />
-            ) : (
-              <div className="w-full h-full bg-purple-600 flex items-center justify-center">
-                <span className="text-white font-bold text-xl sm:text-2xl xl:text-3xl tracking-wide">OMG</span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 pt-0 md:pt-1 lg:pt-2">
-          <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-3 sm:mb-4">{title}</h3>
-          <p className="text-gray-600 text-sm sm:text-base mb-5 sm:mb-6 leading-relaxed">{description}</p>
-
-          {/* Links */}
-          <div className="flex flex-wrap gap-4 sm:gap-6 mb-5 sm:mb-6">
-            {links.learnMore && (
-              <a
-                href={links.learnMore}
-                className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
-              >
-                <span>→</span>
-                <span className="text-base sm:text-lg">Learn more</span>
-              </a>
-            )}
-            {links.useProject && (
-              <a
-                href={links.useProject}
-                className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
-              >
-                <span>↗</span>
-                <span className="text-base sm:text-lg">Use {title}</span>
-              </a>
-            )}
-            {links.github && (
-              <a
-                href={links.github}
-                className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
-              >
-                <img src="/git.png" alt="GitHub" className="w-5 h-5 object-contain" />
-                <span className="text-base sm:text-lg">GitHub</span>
-              </a>
-            )}
-          </div>
-
-          {/* Article Link */}
-          {article && (
+        <div className="flex items-center gap-2 text-[0.88rem] font-medium text-[#a1a1a6]">
+          {year && <span>{year}</span>}
+          {href && (
             <a
-              href={article}
-              className="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors"
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${title}`}
+              className="inline-flex h-[1.9rem] w-[1.9rem] items-center justify-center rounded-full border border-[#c9c9cb] transition-colors hover:border-[#919197]"
             >
-              <span>📄</span>
-              <span>Read the feedback on this project!</span>
+              <img src={`${import.meta.env.BASE_URL}gitcat.png`} alt="GitHub" className="h-4 w-4 object-contain" />
             </a>
           )}
         </div>
-      </div>
+      </header>
 
-      {/* Featured Badge */}
-      {featured && (
-        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
-          <span className="text-gray-400 text-xs sm:text-sm font-bold tracking-wider">
-            FEATURED PROJECT
+      <div className="pointer-events-none absolute right-4 top-[3.1rem] rounded-[9px] border border-[#d1d1d2] bg-[rgba(255,255,255,0.92)] px-2.5 py-1.5 text-[#1f2024] opacity-0 shadow-[0_4px_14px_rgba(0,0,0,0.07)] transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 translate-y-1">
+        <div className="flex items-center gap-3 text-[0.68rem] font-medium">
+          <span className="inline-flex items-center gap-1.5">
+            <StatIcon kind="star" />
+            {stars}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <StatIcon kind="fork" />
+            {forks}
           </span>
         </div>
-      )}
-    </div>
+      </div>
+
+      <p className="m-0 max-w-[34ch] text-[clamp(0.92rem,1.15vw,1rem)] font-normal leading-[1.45] text-[#5b5b61]">
+        {description}
+      </p>
+
+      <ul className="mt-4 flex list-none flex-wrap gap-1.5 p-0" aria-label={`${title} technologies`}>
+        {technologies.map((technology) => (
+          <li
+            key={`${title}-${technology}`}
+            className="rounded-[5px] bg-[#e7e7e8] px-2 py-1 text-[0.54rem] font-medium lowercase leading-none tracking-[0.04em] text-[#5d5d63]"
+          >
+            {technology}
+          </li>
+        ))}
+      </ul>
+    </article>
   );
-};
+}
 
 export default ProjectCard;
