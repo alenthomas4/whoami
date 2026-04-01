@@ -6,6 +6,7 @@ export type ProjectCardProps = {
   href?: string;
   stars?: number;
   forks?: number;
+  badge?: string;
 };
 
 function StatIcon({ kind }: { kind: 'star' | 'fork' }) {
@@ -28,16 +29,18 @@ function StatIcon({ kind }: { kind: 'star' | 'fork' }) {
   );
 }
 
-function ProjectCard({ title, description, technologies, year, href, stars = 0, forks = 0 }: ProjectCardProps) {
+function ProjectCard({ title, description, technologies, year, href, stars = 0, forks = 0, badge }: ProjectCardProps) {
   return (
     <article className="group relative flex min-h-[168px] flex-col justify-between rounded-[12px] border border-[#2a2a33]/35 bg-[rgba(250,250,248,0.96)] px-5 pb-4 pt-4 shadow-[0_1px_0_0_rgba(42,42,51,0.22)] transition duration-200 hover:-translate-y-0.5 hover:border-[#2a2a33]/80 hover:shadow-[0_7px_0_0_rgba(36,36,46,0.95)] focus-within:-translate-y-0.5 focus-within:border-[#2a2a33]/80 focus-within:shadow-[0_7px_0_0_rgba(36,36,46,0.95)]">
       <header className="mb-2.5 flex items-start justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent bg-transparent" aria-hidden="true" />
+        <div className="flex items-center">
           <h3 className="m-0 text-[1.45rem] font-medium leading-none tracking-[-0.03em] text-[#1d1d21]">{title}</h3>
         </div>
         <div className="flex items-center gap-2 text-[0.88rem] font-medium text-[#a1a1a6]">
-          {year && <span>{year}</span>}
+          {badge && (
+            <span className="rounded-full border border-[#c9c9cb] px-2.5 py-1 text-[0.6rem] font-medium uppercase tracking-[0.08em] text-[#6b6b72]">{badge}</span>
+          )}
+          {!badge && year && <span>{year}</span>}
           {href && (
             <a
               href={href}

@@ -2,44 +2,55 @@ import ProjectCard from './ProjectCard';
 
 const PROJECTS = [
   {
-    title: 'verichain',
+    title: 'Verichain',
     year: '2025',
     href: 'https://github.com',
     stars: 48,
     forks: 12,
     description:
-      'pharmaceutical supply chain tracking system. end-to-end traceability from manufacturer to pharmacy.',
+      'Pharmaceutical supply chain tracking system. End-to-end traceability from manufacturer to pharmacy.',
     technologies: ['spring boot', 'postgresql', 'jdbc'],
   },
   {
-    title: 'homePlate',
+    title: 'HomePlate',
     year: '2024',
     href: 'https://github.com',
     stars: 36,
     forks: 9,
     description:
-      'university meal-ordering platform with real-time order tracking and kitchen dashboards.',
+      'University meal-ordering platform with real-time order tracking and kitchen dashboards.',
     technologies: ['react', 'typescript', 'express', 'prisma'],
   },
   {
-    title: 'retinal classifier',
+    title: 'Retinal Classifier',
     year: '2025',
     href: 'https://github.com',
     stars: 31,
     forks: 7,
     description:
-      'resnet50-based retinal disease classification with faiss vector indexing and langchain rag pipeline.',
+      'ResNet50-based retinal disease classification with FAISS vector indexing and LangChain RAG pipeline.',
     technologies: ['python', 'pytorch', 'faiss', 'langchain'],
   },
   {
-    title: 'coopilot',
+    title: 'Coopilot',
     year: '2024',
     href: 'https://github.com',
     stars: 27,
     forks: 5,
     description:
-      'chrome extension for canadian co-op students - job tracking, autofill, and employer accountability data.',
+      'Chrome extension for Canadian co-op students - job tracking, autofill, and employer accountability data.',
     technologies: ['react', 'chrome api', 'typescript'],
+  },
+  {
+    title: 'Paleo',
+    badge: 'Built in 24h',
+    year: '2024',
+    href: 'https://github.com',
+    stars: 22,
+    forks: 4,
+    description:
+      'De-extinction genomic feasibility tool — computes similarity between extinct and living species genomes to assess revival viability.',
+    technologies: ['react', 'typescript', 'python'],
   },
 ];
 
@@ -58,6 +69,7 @@ function ProjectsSection() {
             description={project.description}
             technologies={project.technologies}
             year={project.year}
+            badge={'badge' in project ? project.badge : undefined}
             href={project.href}
             stars={project.stars}
             forks={project.forks}

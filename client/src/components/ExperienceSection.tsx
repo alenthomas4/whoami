@@ -4,51 +4,43 @@ import EducationRow from './EducationRow';
 
 const EXPERIENCE = [
   {
-    role: 'software engineering intern',
-    company: 'nokia',
-    location: 'calgary',
-    period: 'summer 2025',
+    role: 'Undergraduate Research Intern',
+    company: 'University of Calgary',
+    location: 'Dr. Bin Hu',
+    period: 'Jan 2025 - Jul 2025',
     summary:
-      'built internal tooling to automate network diagnostics and cut manual triage effort by standardizing test workflows.',
+      'Worked on retinal disease classification using ResNet50 transfer learning, FAISS vector indexing, and LangChain RAG integration.',
   },
   {
-    role: 'undergraduate research intern',
-    company: 'university of calgary',
-    location: 'dr. bin hu',
-    period: 'jan 2025 - jul 2025',
+    role: 'Honours Researcher',
+    company: 'University of Calgary',
+    location: 'Dr. Janet Leahy',
+    period: 'May 2026 - May 2027',
     summary:
-      'worked on retinal disease classification using resnet50 transfer learning, faiss vector indexing, and langchain rag integration.',
+      'Building a Git education game for CS students and studying gamification in computer science education research.',
   },
   {
-    role: 'honours researcher',
-    company: 'university of calgary',
-    location: 'dr. janet leahy',
-    period: 'may 2026 - may 2027',
+    role: 'Junior External',
+    company: 'Product Management Club',
+    location: 'UCalgary',
+    period: '2024 - Now',
     summary:
-      'building a git education game for cs students and studying gamification in computer science education research.',
-  },
-  {
-    role: 'product lead',
-    company: 'product management club',
-    location: 'ucalgary',
-    period: '2024 - now',
-    summary:
-      'led workshops and mentorship programs helping students ship practical portfolio projects with measurable outcomes.',
+      'Led workshops and mentorship programs helping students ship practical portfolio projects with measurable outcomes.',
   },
 ];
 
 const EDUCATION = [
   {
-    title: 'bsc computer science (honours)',
-    institution: 'university of calgary',
+    title: 'BSc Computer Science (Honours)',
+    institution: 'University of Calgary',
     period: '2022 - 2026',
-    points: ['data concentration', 'minor in data science - gpa 3.68'],
+    points: ['Data Concentration', 'Minor in Data Science - GPA 3.68'],
     muted: true,
   },
   {
-    title: 'western canada high school',
-    institution: 'international baccalaureate (ib)',
-    points: ['ib diploma programme'],
+    title: 'Western Canada High School',
+    institution: 'International Baccalaureate (IB)',
+    points: ['IB Diploma Programme'],
     muted: true,
   },
 ];
@@ -110,10 +102,9 @@ function ExperienceSection() {
         <div className="space-y-3">
           {EDUCATION.map((item) => (
             <EducationRow
-              key={`${item.title}-${item.period}`}
+              key={`${item.title}-${item.institution}`}
               title={item.title}
               institution={item.institution}
-              advisor={item.advisor}
               period={item.period}
               points={item.points}
               muted={item.muted}
